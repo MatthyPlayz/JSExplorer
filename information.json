@@ -1,5 +1,7 @@
-{
-    "info": [
-        "The forum is here: http://jsexplorer.forumotion.com/"
-    ]
-}
+[
+    ["_comments:",
+        "Thanks for looking at the JSON info page!"
+    ],
+  "This page was sorted with JSON.",
+  "The forum is here: http://jsexplorer.forumotion.com/"
+]
