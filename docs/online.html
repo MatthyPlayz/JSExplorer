@@ -1,3 +1,17 @@
+
+<!-- Thanks to Atom, GitHub and GitHub Desktop for making this possible. Oh yeah, also thanks to my intellegent brain. :| -->
+<!--
+JUST A NOTICE
+This site/softeare is under the MPL (aka Mozilla Public License) 2.0
+Your permissions:
+Commercial use, Modification, Distribution, Patent use and Private use.
+And your limitations:
+Liability, Trademark use and Warranty.
+The conditions:
+Disclose source, License and copyright notice and Same license (file).
+Look at the MPL-2.0 here:
+https://github.com/MatthyPlayz/JSExplorer/blob/master/LICENSE
+-->
 <input type="text" id="dwtext" placeholder="Write Text Here" /><button onclick="documentw()">Write Text</button>
 <br />
 <input type="text" id="cltext" placeholder="Write Text Here" /><button onclick="consolel()">Write Text <br />(in JS console)</button>
@@ -10,58 +24,63 @@
 <br />
 <button onclick="customjs();">Add custom<br /> JS code</button>
 <script>
+   // code from a Stack Overflow post answer. Thanks!
+   // The code goes into a *.txt file so you are going to have to copy the contents to a *.js file.
+   function download(filename, text) {
+     var element = document.createElement('a');
+     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+     element.setAttribute('download', filename);
 
-  // code from a Stack Overflow post answer. Thanks!
-  // The code goes into a *.txt file so you are going to have to copy the contents to a *.js file.
-  function download(filename, text) {
-    var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('download', filename);
-  
-    element.style.display = 'none';
-    document.body.appendChild(element);
-  
-    element.click();
-  
-    document.body.removeChild(element);
-  }
+     element.style.display = 'none';
+     document.body.appendChild(element);
+
+     element.click();
+
+     document.body.removeChild(element);
+   }
 </script>
 <script>
-  //All my code :D
-  
-  //Define the variable to put the code in. Will also be used for downloading.
-  var code = ""
-  //Other variables, used in the functions mostly
-  //Rounding (Math.floor()) and logging/HTML outputting the outputvar code = "";
-  function mathfloor() {
-    var roundtextv = roundtext.value;
-    var thing = roundtextv.split("log");
-	var thinga = thing.splice(1, 2);
-    if(roundtextv.includes("log ")) {
-  	var roundtextv = roundtext.value;
-      code += " console.log(Math.floor(" + thinga + "));";
-    } else {
-      code += " Math.floor(" + roundtext.value + ");";
-    }
-  }
-  //Write text with HTML
-  function documentw() {
-    code += " document.write(\"" + dwtext.value + "\");";
-  }
-  function customjs() {
-    var jscode = document.getElementById("customjs").value;
-	code += " ";
-	code += jscode;
-  }
-  //Log something in the JavaScript console (console.log())
-  function consolel() {
-    code += " console.log(\"" + cltext.value + "\");";
-  }
-  //Download the code in a .txt file
-  function finish() {
-    code += " // Code made with JSExplorer. You can remove this! :D";
-    console.log("Code exporting. Code: \n" + code);
-    download("JSexplorer_code.txt", code);
-  }
-</script>
+   //All my code :D
 
+   //Define the variable to put the code in. Will also be used for downloading.
+   var code = ""
+   //Other variables, used in the functions mostly
+   //Rounding (Math.floor()) and logging/HTML outputting the outputvar code = "";
+   function mathfloor() {
+     var roundtextv = roundtext.value;
+     var thing = roundtextv.split("log");
+     var thinga = thing.splice(1, 2);
+     var majig = roundtextv.split("write");
+     var majiga = majig.splice(1, 2);
+     if(roundtextv.includes("log")) {
+   	   var roundtextv = roundtext.value;
+       code += " console.log(Math.floor(" + thinga + "));";
+     } else {
+       if(roundtextv.includes("write")) {
+     	   var roundtextv = roundtext.value;
+         code += " document.write(Math.floor(" + majiga + "));";
+       } else {
+         code += " Math.floor(" + roundtext.value + ");";
+       }
+     }
+   }
+   //Write text with HTML
+   function documentw() {
+     code += " document.write(\"" + dwtext.value + "\");";
+   }
+   function customjs() {
+     var jscode = document.getElementById("customjs").value;
+   code += " ";
+   code += jscode;
+   }
+   //Log something in the JavaScript console (console.log())
+   function consolel() {
+     code += " console.log(\"" + cltext.value + "\");";
+   }
+   //Download the code in a .txt file
+   function finish() {
+     code += " // Code made with JSExplorer. You can remove this! :D";
+     console.log("Code exporting. Code: \n" + code);
+     download("JSexplorer_code.txt", code);
+   }
+</script>
