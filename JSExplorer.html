@@ -54,9 +54,15 @@
     var roundtextv = roundtext.value;
     var thing = roundtextv.split("log");
 	var thinga = thing.splice(1, 2);
+   var thingb = roundtextv.split("write");
+	var thingc = thing.splice(1, 2);
     if(roundtextv.includes("log ")) {
   	var roundtextv = roundtext.value;
       code += " console.log(Math.floor(" + thinga + "));";
+    else if(roundtextv.includes("write ") {
+      var roundtextv = roundtext.value;
+      code += " document.write(Math.floor(" + thingc + "));";
+    }
     } else {
       code += " Math.floor(" + roundtext.value + ");";
     }
