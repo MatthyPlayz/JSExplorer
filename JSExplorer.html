@@ -59,15 +59,14 @@
     if(roundtextv.includes("log ")) {
   	var roundtextv = roundtext.value;
       code += " console.log(Math.floor(" + thinga + "));";
-    } else {
-      code += " Math.floor(" + roundtext.value + ");";
     }
+    if(!(roundtextc.includes("write " || "log ")) {
+       code += " Math.floor(" + roundtext.value + ");";
+       }
     if(roundtextv.includes("write ") {
       var roundtextv = roundtext.value;
       code += " document.write(Math.floor(" + thingc + "));";
-    } else {
-      code += " Math.floor(" + roundtext.value + ");";
-    }
+       }
     document.getElementById("consolea").value += "Added code \"Math.floor\".\n"
     console.log("Added code \"Math.floor\".");
   }
